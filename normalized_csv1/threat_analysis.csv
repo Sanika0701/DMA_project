@@ -1,0 +1,11 @@
+dept_id,methodology,technology
+DEPT0001,Quantitative,Machine Learning
+DEPT0002,Qualitative,Behavioral Analysis
+DEPT0003,Qualitative,Machine Learning
+DEPT0004,Hybrid,Behavioral Analysis
+DEPT0005,Quantitative,Heuristics
+DEPT0006,Hybrid,Heuristics
+DEPT0007,Quantitative,AI
+DEPT0008,Hybrid,AI
+DEPT0009,Quantitative,Machine Learning
+DEPT0010,Qualitative,Machine Learning

@@ -1,0 +1,45 @@
+db.employee_departments.find({ dept_id: "DEPT0001"});
+
+
+db.problems.aggregate([
+ {
+ $lookup: {
+ from: "threat_identification",
+ localField: "threat_id",
+ foreignField: "threat_id",
+ as: "threat_details"
+ }
+ },
+ {
+ $match: {
+ "threat_details.type": "Man-in-the-middle"
+ }
+},
+ {
+ $project: {
+ problem_id: 1,
+ threat_id: 1
+ }
+ }
+ ]);
+
+
+
+db.handles.aggregate([
+  {
+    $lookup: {
+      from: "skill_level",
+      localField: "dept_id",
+      foreignField: "dept_id",
+      as: "skill_details"
+    }
+  },
+  { $unwind: "$skill_details" },
+  {
+    $group: {
+      _id: "$skill_details.skill_level",
+      total_problems: { $count: {} }
+    }
+  },
+  { $project: { skill_level: "$_id", total_problems: 1, _id: 0 } }
+]);
